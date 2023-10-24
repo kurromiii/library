@@ -37,5 +37,6 @@
       <TextField fx:id="writerTxt" layoutX="166.0" layoutY="133.0" prefHeight="25.0" prefWidth="98.0" style="-fx-border-color: purple;" />
       <TextField fx:id="countTxt" layoutX="288.0" layoutY="133.0" prefHeight="27.0" prefWidth="33.0" style="-fx-border-color: purple;" />
       <Button fx:id="exitBtn" layoutX="202.0" layoutY="328.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" style="-fx-background-color: purple;" text="exit" textFill="WHITE" />
+      <Button fx:id="backBtn" layoutX="160.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchToPersonView" style="-fx-background-color: purple;" text="Back" textFill="#f8f6f6" />
    </children>
 </AnchorPane>

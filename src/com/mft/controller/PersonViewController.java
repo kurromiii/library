@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -19,8 +20,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PersonViewController implements Initializable {
+    private Stage stage;
+    private Scene scene;
+    private AnchorPane root;
     @FXML
-    private Button saveBtn, exitBtn;
+    private Button saveBtn, exitBtn , nextBtn;
     @FXML
     private TextField nameTxt,familyTxt;
     @Override
@@ -30,6 +34,7 @@ public class PersonViewController implements Initializable {
             public void handle(ActionEvent event) {
                 //System.out.println(nameTxt.getText()+" "+familyTxt.getText());
                 PersonController.add(nameTxt.getText(),familyTxt.getText());
+                System.out.println("Saved");
             }
         });
         exitBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -38,8 +43,25 @@ public class PersonViewController implements Initializable {
                 Platform.exit();
             }
         });
-
-
+        nextBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    switchToBookView(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
+    public void switchToBookView(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("BookView.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 
 }
