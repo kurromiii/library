@@ -35,6 +35,12 @@ public class PersonViewController implements Initializable {
                 //System.out.println(nameTxt.getText()+" "+familyTxt.getText());
                 PersonController.add(nameTxt.getText(),familyTxt.getText());
                 System.out.println("Saved");
+                try {
+                    switchToBookView(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
         exitBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -55,7 +61,7 @@ public class PersonViewController implements Initializable {
         });
     }
     public void switchToBookView(ActionEvent event) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("BookView.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/BookView.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

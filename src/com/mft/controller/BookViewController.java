@@ -54,7 +54,7 @@ public class BookViewController implements Initializable {
         });
     }
     public void switchToPersonView(ActionEvent event) throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("P.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("../view/P.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
